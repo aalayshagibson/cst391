@@ -65,3 +65,6 @@ npm run start
 
 - This is an image of Hello type script ...
 ![typescript](typescript.png)
+
+## Conclusion
+I created simple ‘’Hello World’’ applications with plain Node.js and with the Express framework for the first time and as a first step, I created a Node.js development environment. I learned the basics of writing sever-side code applications in JS and TS, I learned to use TS with Node applications and to initialize a Node.js project with npm, including the installation of framework dependencies, and to run the application, for which I used a web browser to test, and I used the tool called Nodemon to automatically update the code while the development was ongoing. We also learn to manage the version control of the application using Git and I learned about the differences in module systems in Node applications which allowed us to learn the basics of server-side development.
