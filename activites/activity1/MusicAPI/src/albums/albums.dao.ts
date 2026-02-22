@@ -1,5 +1,5 @@
 import { execute } from "../services/mysql.connector";
-import { Album } from "./albums.model.js";
+import { Album } from "./albums.model";
 
 export const AlbumDao = {
   readAlbums: async (): Promise<Album[]> => {

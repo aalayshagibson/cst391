@@ -1,6 +1,6 @@
 import express from "express";
-import albumsRouter from "./albums/albums.routes.js";
-import artistsRouter from "./artists/artists.routes.js";
+import albumsRouter from "./albums/albums.routes";
+import artistsRouter from "./artists/artists.routes";
 
 const app = express();
 const port = process.env.PORT || 5000;

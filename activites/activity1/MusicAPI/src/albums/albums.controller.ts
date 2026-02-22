@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { AlbumDao } from "./albums.dao.js";
+import { AlbumDao } from "./albums.dao";
 
 export const AlbumsController = {
   readAlbums: async (req: Request, res: Response) => {

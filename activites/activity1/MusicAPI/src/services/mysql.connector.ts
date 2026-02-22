@@ -1,4 +1,4 @@
-import mysql, { Pool } from "mysql2"; // use mysql2
+import mysql, { Pool } from "mysql2"; 
 import dotenv from "dotenv";
 
 dotenv.config();
