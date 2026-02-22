@@ -211,16 +211,9 @@ http://localhost:5000/artists
 
  
 
- 
-
   ## Troubleshooting 
-
-|Issues|Solution|| 
-
-|--|--|--| 
-
-|npm run start fails or command not found|Run npm install to install dependencies|| 
-
-|ts-node: command not found|Run npm install ts-node typescript --save-dev|| 
-
-|Cannot GET / or routes not found|Confirm routers are registered in app.ts using app.use()|| 
+|issues |solutions||
+|--|-|-|
+|npm run start fails or command not found|Run npm install to install dependencies||
+|ts-node: command not found|Run npm install ts-node typescript --save-dev||
+|Cannot GET / or routes not found|Confirm routers are registered in app.ts using app.use()||
