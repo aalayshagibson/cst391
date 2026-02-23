@@ -35,8 +35,7 @@ Faith Quest is a RESTful web service that specializes in managing hope scripture
 
 - Be tested using Postman
 
-Include a functional screencast demonstration
-The application must ...
+
 
 ## Sitemap
 ```js
