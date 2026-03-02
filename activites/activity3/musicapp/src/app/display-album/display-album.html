@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{ album.title }}</h5>
+    <p class="card-text"><strong>Artist:</strong> {{ album.artist }}</p>
+    <p class="card-text"><strong>Year:</strong> {{ album.year }}</p>
+    <p class="card-text"><strong>ID:</strong> {{ album.id }}</p>
+
+    <div *ngIf="album.image">
+      <img class="img-fluid mt-2" [src]="album.image" alt="Album cover">
+    </div>
+  </div>
+</div>

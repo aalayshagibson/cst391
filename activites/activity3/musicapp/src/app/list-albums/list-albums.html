@@ -1,0 +1,15 @@
+<h4>Albums for {{ artist.artist }}</h4>
+
+<div class="list-group">
+  <button
+    type="button"
+    class="list-group-item list-group-item-action"
+    *ngFor="let album of albums"
+    (click)="onSelectAlbum(album)">
+    {{ album.title }} ({{ album.year }})
+  </button>
+</div>
+
+<div class="mt-3" *ngIf="selectedAlbum">
+  <app-display-album [album]="selectedAlbum"></app-display-album>
+</div>
