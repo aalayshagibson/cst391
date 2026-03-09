@@ -1,0 +1,26 @@
+<div *ngIf="artist">
+  <h2>Albums for {{ artist.artist }}</h2>
+
+  <ul>
+    <li *ngFor="let album of albums">
+      <strong (click)="onSelectAlbum(album)" style="cursor: pointer;">
+        {{ album.title }}
+      </strong>
+
+      <ul *ngIf="album.tracks.length">
+        <li *ngFor="let track of album.tracks">
+          {{ track.title }}
+        </li>
+      </ul>
+
+      <a [routerLink]="['/edit-album', album.id]">Edit</a>
+      |
+      <a [routerLink]="['/delete-album', album.id]">Delete</a>
+    </li>
+  </ul>
+
+  <app-display-album
+    *ngIf="selectedAlbum"
+    [album]="selectedAlbum">
+  </app-display-album>
+</div>

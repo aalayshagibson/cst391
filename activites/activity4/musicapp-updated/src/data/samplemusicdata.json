@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "artist": "Beyoncé",
+    "title": "Dangerously in Love",
+    "year": 2003,
+    "image": "assets/albums/dangerously-in-love.jpg"
+  },
+  {
+    "id": 2,
+    "artist": "Beyoncé",
+    "title": "Renaissance",
+    "year": 2022,
+    "image": "assets/albums/renaissance.jpg"
+  },
+  {
+    "id": 3,
+    "artist": "Jay-Z",
+    "title": "The Blueprint",
+    "year": 2001,
+    "image": "assets/albums/blueprint.jpg"
+  },
+  {
+    "id": 4,
+    "artist": "Jay-Z",
+    "title": "4:44",
+    "year": 2017,
+    "image": "assets/albums/444.jpg"
+  }
+]

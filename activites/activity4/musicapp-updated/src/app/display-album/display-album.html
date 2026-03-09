@@ -1,0 +1,11 @@
+<div *ngIf="album">
+  <h2>{{ album.title }}</h2>
+  <h3>{{ album.artist }}</h3>
+
+  <h4>Tracks</h4>
+  <ul *ngIf="album.tracks.length">
+    <li *ngFor="let track of album.tracks">
+      {{ track.title }}
+    </li>
+  </ul>
+</div>
