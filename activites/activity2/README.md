@@ -24,7 +24,7 @@ npm install -g @angular/cli
 ```bash
 ng version
 ```
-```
+```git 
 ng new testapp
 ```
 ```bash

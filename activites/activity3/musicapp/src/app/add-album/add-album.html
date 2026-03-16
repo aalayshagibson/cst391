@@ -1,0 +1,24 @@
+<div>
+
+  <h2>Add Album</h2>
+
+  <label>Album Title</label>
+  <input [(ngModel)]="album.title">
+
+  <br><br>
+
+  <label>Artist</label>
+  <input [(ngModel)]="album.artist">
+
+  <br><br>
+
+  <label>Year</label>
+  <input [(ngModel)]="album.year">
+
+  <br><br>
+
+  <button (click)="addAlbum()">Add Album</button>
+
+  <p>{{ message }}</p>
+
+</div>

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-
-import exampledata from '../../../data/samplemusicdata.json';
+import { HttpClient } from '@angular/common/http';
 
 import { Artist } from '../../models/artists.model';
 import { Album } from '../../models/albums.model';
@@ -10,52 +9,54 @@ import { Album } from '../../models/albums.model';
 })
 export class MusicServiceService {
 
-  albums: Album[] = (exampledata as any) as Album[];
+  private host = 'http://localhost:5000';
 
-  public getArtists(): Artist[] {
-    const seen = new Set<string>();
-    const artists: Artist[] = [];
+  constructor(private http: HttpClient) { }
 
-    for (const a of this.albums) {
-      if (!seen.has(a.artist)) {
-        seen.add(a.artist);
-        artists.push(new Artist(a.artist));
-      }
-    }
-
-    return artists.sort((x, y) => x.artist.localeCompare(y.artist));
+  public getArtists(callback: (artists: Artist[]) => void): void {
+    this.http.get<Artist[]>(`${this.host}/artists`)
+      .subscribe((data) => {
+        callback(data);
+      });
   }
 
-  public getAlbums(artist: string): Album[] {
-    return this.albums.filter(a => a.artist === artist);
+  public getAlbums(artist: string, callback: (albums: Album[]) => void): void {
+    this.http.get<Album[]>(`${this.host}/albums`)
+      .subscribe((data) => {
+        const filteredAlbums = data.filter(a => a.artist === artist);
+        callback(filteredAlbums);
+      });
   }
 
-  public getAlbum(artist: string, id: number): Album | null {
-    return this.albums.find(a => a.artist === artist && a.id === id) ?? null;
+  public getAlbum(artist: string, id: number, callback: (album: Album | null) => void): void {
+    this.http.get<Album[]>(`${this.host}/albums`)
+      .subscribe((data) => {
+        const foundAlbum = data.find(a => a.artist === artist && a.id === id) ?? null;
+        callback(foundAlbum);
+      });
   }
 
-  public createAlbum(album: Album): number {
-    try {
-      this.albums.push(album);
-      return album.id;
-    } catch {
-      return -1;
-    }
+  public createAlbum(album: Album, callback: (result: number) => void): void {
+    this.http.post<any>(`${this.host}/albums`, album)
+      .subscribe({
+        next: () => callback(album.id),
+        error: () => callback(-1)
+      });
   }
 
-  public updateAlbum(album: Album): number {
-    const index = this.albums.findIndex(a => a.id === album.id && a.artist === album.artist);
-    if (index === -1) return -1;
-
-    this.albums.splice(index, 1, album);
-    return 0;
+  public updateAlbum(album: Album, callback: (result: number) => void): void {
+    this.http.put<any>(`${this.host}/albums/${album.id}`, album)
+      .subscribe({
+        next: () => callback(0),
+        error: () => callback(-1)
+      });
   }
 
-  public deleteAlbum(id: number, artist: string): number {
-    const index = this.albums.findIndex(a => a.id === id && a.artist === artist);
-    if (index === -1) return -1;
-
-    this.albums.splice(index, 1);
-    return 0;
+  public deleteAlbum(id: number, artist: string, callback: (result: number) => void): void {
+    this.http.delete<any>(`${this.host}/albums/${id}`)
+      .subscribe({
+        next: () => callback(0),
+        error: () => callback(-1)
+      });
   }
 }

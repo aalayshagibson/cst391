@@ -14,20 +14,32 @@ import { ListAlbumsComponent } from '../list-albums/list-albums';
   styleUrl: './list-artists.css'
 })
 export class ListArtistsComponent implements OnInit {
+
   selectedArtist: Artist | null = null;
   artists: Artist[] = [];
 
-  constructor(private route: ActivatedRoute, private service: MusicServiceService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private service: MusicServiceService
+  ) {}
 
   ngOnInit(): void {
+
     this.route.queryParams.subscribe(() => {
-      console.log('Getting data....');
-      this.artists = this.service.getArtists();
+
+      console.log('Getting artists from API...');
+
+      this.service.getArtists((artists: Artist[]) => {
+        this.artists = artists;
+      });
+
       this.selectedArtist = null;
     });
+
   }
 
   onSelectArtist(artist: Artist): void {
     this.selectedArtist = artist;
   }
+
 }

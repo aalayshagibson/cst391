@@ -46,4 +46,3 @@ I was able to run the app using ng serve and access the app through http://local
 
 
 
-[def]: screenahot1.png

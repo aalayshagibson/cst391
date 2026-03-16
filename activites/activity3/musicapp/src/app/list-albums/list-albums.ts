@@ -1,32 +1,49 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MusicServiceService } from '../service/service/music-service';
 import { Artist } from '../models/artists.model';
 import { Album } from '../models/albums.model';
-import { DisplayAlbumComponent } from '../display-album/display-album';
 
 @Component({
   selector: 'app-list-albums',
   standalone: true,
-  imports: [CommonModule, DisplayAlbumComponent],
+  imports: [CommonModule],
   templateUrl: './list-albums.html',
   styleUrl: './list-albums.css'
 })
-export class ListAlbumsComponent implements OnInit {
-  @Input() artist!: Artist;
+export class ListAlbumsComponent implements OnInit, OnChanges {
+
+  @Input() artist: Artist | null = null;
 
   albums: Album[] = [];
-  selectedAlbum: Album | null = null;
 
   constructor(private service: MusicServiceService) {}
 
   ngOnInit(): void {
-    this.albums = this.service.getAlbums(this.artist.artist);
-    this.selectedAlbum = null;
+    this.loadAlbums();
   }
 
-  public onSelectAlbum(album: Album): void {
-    this.selectedAlbum = album;
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['artist']) {
+      this.loadAlbums();
+    }
   }
+
+  loadAlbums(): void {
+
+    if (this.artist && this.artist.artist) {
+
+      console.log('Loading albums for:', this.artist.artist);
+
+      this.service.getAlbums(this.artist.artist, (albums: Album[]) => {
+        this.albums = albums;
+      });
+
+    } else {
+      this.albums = [];
+    }
+
+  }
+
 }
