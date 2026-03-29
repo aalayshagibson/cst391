@@ -27,7 +27,8 @@ git push
 ## Test Link 
 http://localhost:3000/
 
-![finishedprogram](part1.pngpng)
+![finishedprogram](part1.png)
+![finishedprogrampart2](part2.png)
 
 
 ## Conclusion
